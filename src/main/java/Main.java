@@ -13,13 +13,15 @@ public class Main {
      */
     public static Function<String, List<String>> createDictionary = note -> {
       return Arrays.stream(note.split(" "))
+              .distinct()
               .sorted()
               .collect(Collectors.toList());
     };
 
     public static void main(String[] args) {
         // Некая записка с непонятными словами
-        String note = "asd k sd dsjfkuw ewrfs sdf asdkn iweor hdbfjs dfas aw wuuj wdfsclkj iwe we kz";
+        String note = "asd k sd dsjfkuw ewrfs sdf asdkn iweor hdbfjs dfas aw wuuj wdfsclkj iwe we kz "+
+                "dfas aw wuuj wdfsclkj iwe we kz"; // Явное дублирование
         System.out.println(createDictionary.apply(note));
     }
 }
